@@ -1,30 +1,29 @@
 package controller
 
 import (
-	"example.com/sample-go-wire/src/api/client/service"
-	"example.com/sample-go-wire/src/api/models"
+	domain "example.com/sample-go-wire/src/domain/client"
 	"github.com/gofiber/fiber/v2"
 )
 
 type client struct {
-	service service.ClientService
+	domain domain.ClientService
 }
 
-func New(service service.ClientService) *client {
+func New(domain domain.ClientService) *client {
 	return &client{
-		service: service,
+		domain: domain,
 	}
 }
 
 func (c *client) Add(ctx *fiber.Ctx) error {
-	var client models.Client
+	var client domain.Client
 
 	err := ctx.BodyParser(&client)
 	if err != nil {
 		return err
 	}
 
-	err = c.service.Add(ctx.Context(), client)
+	err = c.domain.Add(ctx.Context(), client)
 	if err != nil {
 		return err
 	}

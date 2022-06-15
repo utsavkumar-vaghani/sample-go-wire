@@ -3,7 +3,7 @@ package repository
 import (
 	"context"
 
-	"example.com/sample-go-wire/src/api/models"
+	domain "example.com/sample-go-wire/src/domain/client"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -12,13 +12,13 @@ type client struct {
 	db *mongo.Database
 }
 
-func New(db *mongo.Database) ClientRepository {
+func New(db *mongo.Database) domain.ClientRepository {
 	return &client{
 		db: db,
 	}
 }
 
-func (c client) Add(ctx context.Context, client models.Client) error {
+func (c client) Add(ctx context.Context, client domain.Client) error {
 	data := bson.M{
 		"name": client.Name,
 	}
@@ -28,14 +28,14 @@ func (c client) Add(ctx context.Context, client models.Client) error {
 	return err
 }
 
-func (c client) Find(ctx context.Context, name string) (*models.Client, error) {
+func (c client) Find(ctx context.Context, name string) (*domain.Client, error) {
 	data := bson.M{
 		"name": name,
 	}
 
 	result := c.db.Collection("temp-client").FindOne(ctx, data)
 
-	var client models.Client
+	var client domain.Client
 
 	err := result.Decode(&client)
 	if err != nil {

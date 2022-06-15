@@ -7,8 +7,8 @@ import (
 
 func Logging(ctx *fiber.Ctx) error {
 	var method = string(ctx.Request().Header.Method())
+	
 	err := ctx.Next()
-
 	if err != nil {
 		code := 500
 

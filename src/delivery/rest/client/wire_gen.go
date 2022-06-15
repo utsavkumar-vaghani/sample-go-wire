@@ -6,8 +6,8 @@
 package controller
 
 import (
-	"example.com/sample-go-wire/src/api/client/repository"
-	"example.com/sample-go-wire/src/api/client/service"
+	"example.com/sample-go-wire/src/repository/client"
+	"example.com/sample-go-wire/src/usecase/client"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 

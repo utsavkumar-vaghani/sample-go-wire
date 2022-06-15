@@ -6,9 +6,9 @@ import (
 	// loading configs
 	_ "example.com/sample-go-wire/src/config"
 
-	controllerClient "example.com/sample-go-wire/src/api/client/controller"
-	controllerUser "example.com/sample-go-wire/src/api/user/controller"
 	"example.com/sample-go-wire/src/db"
+	controllerClient "example.com/sample-go-wire/src/delivery/rest/client"
+	controllerUser "example.com/sample-go-wire/src/delivery/rest/client"
 	middleware "example.com/sample-go-wire/src/middlewares"
 	"github.com/gofiber/fiber/v2"
 )

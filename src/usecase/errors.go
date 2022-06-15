@@ -1,6 +1,6 @@
-package errors
+package usecase
 
-import "github.com/gofiber/fiber/v2"
+import "github.com/gofiber/fiber"
 
 var (
 	ErrUserAlreadyExists   = fiber.NewError(403, "user aleady exists")
